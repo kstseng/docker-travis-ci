@@ -5,3 +5,8 @@ before_install:
   - docker build -t myimg .
   - docker run -d --name mycont myimg
   - docker ps -a
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    make docker_deploy tag=latest;
+    fi
