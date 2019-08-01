@@ -8,7 +8,7 @@ before_install:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker tag ddd7975/myimg:latest ddd7975/ myrepo:latest;
-    docker push ddd7975/myrepo:latest;
+    docker tag myimg:latest myimg:latest;
+    docker push myimg:latest;
     fi
 
